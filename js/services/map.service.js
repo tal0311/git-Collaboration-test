@@ -4,7 +4,7 @@ export const mapService = {
   panTo,
 }
 
-window.API_KEY = 'AIzaSyBkDh_I0warBaT4HBvXXa8jJo-EybvDI1Y'
+const API_KEY = 'AIzaSyBkDh_I0warBaT4HBvXXa8jJo-EybvDI1Y'
 
 var gMap
 

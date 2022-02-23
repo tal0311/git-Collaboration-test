@@ -21,12 +21,31 @@ body {
 
 /* reset base */
 
-input[name='locName'],
 input[type='search'] {
   height: 3rem;
   width: 20rem;
   border-radius: 20px;
   border: none;
+}
+input[name='locName'] {
+  margin-inline-start: 0.5rem;
+  max-width: 100px;
+  border: none;
+  border-bottom: 1px solid var(--btnBgClr);
+  font: 0.7rem;
+}
+
+input[name='locName']::placeholder {
+  font-size: 0.8rem;
+}
+
+input[name='locName']:focus {
+  outline: none;
+}
+input[name='locName']:focus::placeholder {
+  transition: 0.3s ease;
+  transform: translateY(-150%);
+  opacity: 0;
 }
 
 input::placeholder {

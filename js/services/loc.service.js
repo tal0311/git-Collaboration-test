@@ -1,9 +1,8 @@
 import { storageService } from './storage.service.js';
 
-
 export const locService = {
     getLocs,
-    createNewLoc,
+    newLoc,
 };
 
 const CACHE_KEY = 'locations'
@@ -16,7 +15,7 @@ const locs = [
     { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
 ];
 
-function createNewLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
+function newLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
     const loc =  {
         id,
         name,
@@ -41,4 +40,4 @@ function getLocs() {
     });
 }
 
-createNewLoc(5, 'Greatplace', 32.047104, 34.832384) 
+newLoc(5, 'Greatplace', 32.047104, 34.832384) 

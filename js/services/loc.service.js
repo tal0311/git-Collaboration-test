@@ -6,6 +6,7 @@ export const locService = {
   setCurrPos,
   setNameToLoc,
   crateNewPos,
+  onDeleteLoc
 }
 
 var gCurrLoc = {}
@@ -65,4 +66,8 @@ function getLocs() {
       resolve(gCache)
     }, 2000)
   })
+}
+
+function onDeleteLoc(params) {
+    let loc = getLocById
 }

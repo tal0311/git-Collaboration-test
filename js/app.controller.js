@@ -6,8 +6,8 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
-window.onSaveLoc = onSaveLoc 
-
+window.onSaveLoc = onSaveLoc
+window.gCurrPos
 
 function onInit() {
   mapService
@@ -16,7 +16,7 @@ function onInit() {
       console.log('Map is ready')
     })
     .catch(() => console.log('Error: cannot init map'))
-    locService.getLocs().then(locs => renderLocs(locs))
+  locService.getLocs().then((locs) => renderLocs(locs))
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -57,18 +57,18 @@ function onPanTo() {
 }
 
 function renderLocs(locs) {
-    const strHTMLs = locs.map(loc => {
-        return `
+  const strHTMLs = locs.map((loc) => {
+    return `
             ${loc.name}
         `
-    })
-    let elLocTable = document.querySelector('.locs-table')
-    elLocTable.innerHTML = strHTMLs.join('')
+  })
+  let elLocTable = document.querySelector('.locs-table')
+  elLocTable.innerHTML = strHTMLs.join('')
 }
 
 function onSaveLoc() {
-    const name = document.querySelector('input[name="locName"]')
-    console.log(name);
-    
-    
+  const placeName = document.querySelector('input[name="locName"]').value
+
+  locService.setNameToLoc(placeName)
+  locService.crateNewPos()
 }

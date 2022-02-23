@@ -25,20 +25,16 @@ function initMap(lat = 32.074984, lng = 34.9120554) {
 
 function addMapListener(infoWindow) {
   gMap.addListener('click', (mapsMouseEvent) => {
-    // Close the current InfoWindow.
     infoWindow.close()
-
-    // Create a new InfoWindow.
-
     let lat = mapsMouseEvent.latLng.lat()
-    let lang = mapsMouseEvent.latLng.lng()
+    let lng = mapsMouseEvent.latLng.lng()
+    let pos = { lat, lng }
 
     const contentString = `
     <div  class="infoWindow">
     <button onclick="onSaveLoc()">save</button>
     <input type="text" name="locName"  placeHolder="name this"/>
-   
-    </div>
+       </div>
     `
 
     infoWindow = new google.maps.InfoWindow({
@@ -46,13 +42,8 @@ function addMapListener(infoWindow) {
       position: mapsMouseEvent.latLng,
       maxWidth: 250,
     })
-    // id, name, lat, lng, weather, createdAt, updatedAt
-    // locService.newLoc(mapsMouseEvent.latLng.toJSON())
-    let loc = mapsMouseEvent.latLng.toJSON()
 
-    // infoWindow.setContent(JSON.stringify(infoWindow.content, null, 2))
-
-    locService.newLoc(1, 'test', loc.lat, loc.lng)
+    locService.setCurrPos(pos)
     infoWindow.open(gMap)
   })
 

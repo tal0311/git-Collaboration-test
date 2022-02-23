@@ -7,7 +7,7 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onSaveLoc = onSaveLoc
-window.gCurrPos
+window.onDeleteLoc = onDeleteLoc
 
 function onInit() {
   mapService
@@ -83,4 +83,9 @@ function onSaveLoc() {
     const placeName = document.querySelector('input[name="locName"]').value;
     locService.setNameToLoc(placeName);
     onGetLocs();
+}
+
+function onDeleteLoc(locId) {
+    locService.deleteLoc(locId)
+    onGetLocs()
 }

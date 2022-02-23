@@ -6,7 +6,7 @@ export const locService = {
   setCurrPos,
   setNameToLoc,
   crateNewPos,
-  onDeleteLoc
+  deleteLoc,
 }
 
 var gNextId = 101
@@ -74,10 +74,10 @@ function getLocs() {
   })
 }
 
-function onDeleteLoc(locId) {
-    let loc = getLocById(locId) 
+function deleteLoc(locId) {
+    // let loc = getLocById(locId) 
+    const idx = gCache.findIndex(loc => loc.id === locId)
+    gCache.splice(idx, 1);
+    storageService.save(CACHE_KEY, gCache)
 }
 
-function getLocById(locId) {
-    return gCache.find(loc => loc.id === locId)
-}

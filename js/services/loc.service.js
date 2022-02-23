@@ -68,6 +68,10 @@ function getLocs() {
   })
 }
 
-function onDeleteLoc(params) {
-    let loc = getLocById
+function onDeleteLoc(locId) {
+    let loc = getLocById(locId) 
+}
+
+function getLocById(locId) {
+    return gCache.find(loc => loc.id === locId)
 }

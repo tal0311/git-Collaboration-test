@@ -29,12 +29,15 @@ function addMapListener(infoWindow) {
     infoWindow.close()
 
     // Create a new InfoWindow.
+
+    console.log(mapsMouseEvent.latLng)
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     })
     // id, name, lat, lng, weather, createdAt, updatedAt
     // locService.newLoc(mapsMouseEvent.latLng.toJSON())
     let loc = mapsMouseEvent.latLng.toJSON()
+
     locService.newLoc(1, 'test', loc.lat, loc.lng)
 
     infoWindow.setContent(

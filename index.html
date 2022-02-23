@@ -10,7 +10,7 @@
     <header class="flex">
       <h1>TravelTip Starter</h1>
       <div class="search-container">
-        <input type="search" placeholder="Search location" />
+        <input onchange="onSearchLoc(this.value)" type="search" placeholder="Search location" />
         <button>Go!</button>
       </div>
     </header>
@@ -73,6 +73,7 @@
     </div>
 
     <script async defer></script>
+    <script src="lib/axios.js"></script>
     <script type="module" src="js/app.controller.js"></script>
   </body>
 </html>

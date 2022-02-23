@@ -30,21 +30,37 @@ function addMapListener(infoWindow) {
 
     // Create a new InfoWindow.
 
-    console.log(mapsMouseEvent.latLng)
+    let lat = mapsMouseEvent.latLng.lat()
+    let lang = mapsMouseEvent.latLng.lng()
+
+    const contentString = `
+    <div  class="infoWindow">
+    <button onclick="onSaveLoc()">save</button>
+    <input type="text" name="locName"  placeHolder="name this"/>
+   
+    </div>
+    `
+
     infoWindow = new google.maps.InfoWindow({
+      content: contentString,
       position: mapsMouseEvent.latLng,
+      maxWidth: 250,
     })
     // id, name, lat, lng, weather, createdAt, updatedAt
     // locService.newLoc(mapsMouseEvent.latLng.toJSON())
     let loc = mapsMouseEvent.latLng.toJSON()
 
-    locService.newLoc(1, 'test', loc.lat, loc.lng)
+    // infoWindow.setContent(JSON.stringify(infoWindow.content, null, 2))
 
-    infoWindow.setContent(
-      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    )
+    locService.newLoc(1, 'test', loc.lat, loc.lng)
     infoWindow.open(gMap)
   })
+
+  //   const marker = new google.maps.Marker({
+  //     position: uluru,
+  //     gMap,
+  //     title: 'new location',
+  //   })
 }
 
 // pass

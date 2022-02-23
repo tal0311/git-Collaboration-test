@@ -19,3 +19,14 @@ nav.flex {
   margin-bottom: 5px;
   justify-content: space-around;
 }
+
+.infoWindow {
+  /* background-color: rgb(102, 102, 132); */
+  padding: 1rem;
+  margin: auto;
+  display: flex;
+}
+
+input[name='locName'] {
+  max-width: 100px;
+}

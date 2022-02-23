@@ -9,6 +9,7 @@ export const locService = {
   onDeleteLoc
 }
 
+var gNextId = 101
 var gCurrLoc = {}
 
 console.log('gCurrLoc:', gCurrLoc)
@@ -42,15 +43,16 @@ function setCurrPos(pos) {
 function setNameToLoc(placeName) {
   gCurrLoc.name = placeName
 
+  setId()
   getDate()
   crateNewPos()
 }
 
 function crateNewPos() {
   if (gCurrLoc.name && gCurrLoc.pos) {
-    let { name, pos, createdAt } = gCurrLoc
+    let { name, pos, createdAt, id } = gCurrLoc
     console.log('new ')
-    newLoc(1, name, pos.lat, pos.lng, null, createdAt)
+    newLoc(id, name, pos.lat, pos.lng, null, createdAt)
     gCurrLoc = {}
   }
 }
@@ -58,6 +60,10 @@ function crateNewPos() {
 function getDate() {
   let date = Date.now()
   gCurrLoc.createdAt = date
+}
+
+function setId() {
+  gCurrLoc.id = gNextId++
 }
 
 function getLocs() {

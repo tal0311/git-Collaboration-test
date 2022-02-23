@@ -16,6 +16,7 @@ const locs = [
 
 
 function newLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
+    console.log('working');
     const loc =  {
         id,
         name,
@@ -25,11 +26,9 @@ function newLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
         createdAt,
         updatedAt,
     };
-    // return loc
-    locs.push(loc)
+    gCache.push(loc)
     storageService.save(CACHE_KEY, gCache)
 }
-
 
 function getLocs() {
     return new Promise((resolve, reject) => {

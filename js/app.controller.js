@@ -6,6 +6,8 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onSaveLoc = onSaveLoc 
+
 
 function onInit() {
   mapService
@@ -62,4 +64,11 @@ function renderLocs(locs) {
     })
     let elLocTable = document.querySelector('.locs-table')
     elLocTable.innerHTML = strHTMLs.join('')
+}
+
+function onSaveLoc() {
+    const name = document.querySelector('input[name="locName"]')
+    console.log(name);
+    
+    
 }

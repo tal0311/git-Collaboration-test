@@ -1,8 +1,10 @@
+import { storageService } from './storage.service';
+
+
 export const locService = {
     getLocs,
     createNewLoc,
 };
-
 
 const locs = [
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
@@ -10,7 +12,7 @@ const locs = [
 ];
 
 function createNewLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
-    return {
+    const loc =  {
         id,
         name,
         lat,
@@ -19,6 +21,8 @@ function createNewLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
         createdAt,
         updatedAt,
     };
+    console.log(loc);
+
 }
 
 
@@ -30,3 +34,4 @@ function getLocs() {
     });
 }
 
+createNewLoc(5, 'Greatplace', 32.047104, 34.832384) 

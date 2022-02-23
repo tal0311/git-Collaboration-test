@@ -14,6 +14,7 @@ function onInit() {
       console.log('Map is ready')
     })
     .catch(() => console.log('Error: cannot init map'))
+    locService.getLocs().then(locs => renderLocs(locs))
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -51,4 +52,14 @@ function onGetUserPos() {
 function onPanTo() {
   console.log('Panning the Map')
   mapService.panTo(35.6895, 139.6917)
+}
+
+function renderLocs(locs) {
+    const strHTMLs = locs.map(loc => {
+        return `
+            ${loc.name}
+        `
+    })
+    let elLocTable = document.querySelector('.locs-table')
+    elLocTable.innerHTML = strHTMLs.join('')
 }

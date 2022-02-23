@@ -10,10 +10,10 @@ var gCache = storageService.load(CACHE_KEY) || {};
 
 
 const locs = [
-
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
     { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
 ];
+
 
 function newLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
     const loc =  {
@@ -25,19 +25,18 @@ function newLoc(id, name, lat, lng, weather, createdAt, updatedAt) {
         createdAt,
         updatedAt,
     };
-    console.log(loc);
+    // return loc
     locs.push(loc)
-    gCache = locs
-    storageService.save(CACHE_KEY,gCache)
+    storageService.save(CACHE_KEY, gCache)
 }
 
 
 function getLocs() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(locs);
+            resolve(gCache);
         }, 2000);
     });
 }
 
-newLoc(5, 'Greatplace', 32.047104, 34.832384) 
+

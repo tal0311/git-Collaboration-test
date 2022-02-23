@@ -8,6 +8,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onSaveLoc = onSaveLoc
 window.onDeleteLoc = onDeleteLoc
+window.onSearchLoc = onSearchLoc
 
 function onInit() {
   mapService
@@ -59,6 +60,14 @@ function onPanTo(lat, lng) {
   mapService.panTo(lat, lng)
 }
 
+function onSearchLoc(loc) {
+    mapService.getNewCoor(loc).then(loc => {
+        const newLoc = loc.results[0].geometry.location
+        console.log(newLoc.lat, newLoc.lng);
+        onPanTo(newLoc.lat, newLoc.lng)
+    })
+}
+
 function renderLocs(locs) {
   const strHTMLs = locs.map((loc) => {
     return `
@@ -89,3 +98,4 @@ function onDeleteLoc(locId) {
     locService.deleteLoc(locId)
     onGetLocs()
 }
+

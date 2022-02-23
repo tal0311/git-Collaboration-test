@@ -70,7 +70,7 @@ function renderLocs(locs) {
                 <button onclick="onPanTo(${loc.lat}, ${loc.lng})">Go</button>
             </td>
             <td>
-                <button onclick="onDelete(${loc.id})">Delete</button>
+                <button onclick="onDeleteLoc(${loc.id})">Delete</button>
             </td>
         </tr>    
         `
@@ -80,8 +80,7 @@ function renderLocs(locs) {
 }
 
 function onSaveLoc() {
-  const placeName = document.querySelector('input[name="locName"]').value
-  locService.setNameToLoc(placeName)
-  onGetLocs()
-  //   locService.crateNewPos()
+    const placeName = document.querySelector('input[name="locName"]').value;
+    locService.setNameToLoc(placeName);
+    onGetLocs();
 }

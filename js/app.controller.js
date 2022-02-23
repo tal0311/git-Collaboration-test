@@ -16,8 +16,8 @@ function onInit() {
       console.log('Map is ready')
     })
     .catch(() => console.log('Error: cannot init map'))
-//   locService.getLocs().then((locs) => renderLocs(locs))
-    onGetLocs()
+  //   locService.getLocs().then((locs) => renderLocs(locs))
+  onGetLocs()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -38,7 +38,6 @@ function onGetLocs() {
     console.log('Locations:', locs)
     renderLocs(locs)
     // document.querySelector('.locs-table').innerText = JSON.stringify(locs)
-
   })
 }
 
@@ -73,5 +72,5 @@ function onSaveLoc() {
   const placeName = document.querySelector('input[name="locName"]').value
   locService.setNameToLoc(placeName)
   onGetLocs()
-//   locService.crateNewPos()
+  //   locService.crateNewPos()
 }

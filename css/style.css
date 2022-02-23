@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  background-color: orange;
+}
+
+/* helpers */
+
+.flex {
+  display: flex;
+}
+
+header.flex {
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+nav.flex {
+  margin-bottom: 5px;
+  justify-content: space-around;
+}

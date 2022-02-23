@@ -62,9 +62,10 @@ function onPanTo(lat, lng) {
 function renderLocs(locs) {
   const strHTMLs = locs.map((loc) => {
     return `
-        <tr>
+        <tr class ="location-row">
             <td>
-                ${loc.name}
+            <h3>${loc.name}</h3>
+                
             </td>
             <td>
                 <button onclick="onPanTo(${loc.lat}, ${loc.lng})">Go</button>
@@ -80,7 +81,7 @@ function renderLocs(locs) {
 }
 
 function onSaveLoc() {
-    const placeName = document.querySelector('input[name="locName"]').value;
-    locService.setNameToLoc(placeName);
-    onGetLocs();
+  const placeName = document.querySelector('input[name="locName"]').value
+  locService.setNameToLoc(placeName)
+  onGetLocs()
 }

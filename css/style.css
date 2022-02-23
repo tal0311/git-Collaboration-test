@@ -1,3 +1,13 @@
+:root {
+  --mainLayout: 80vw;
+  --btnBgClr: #333;
+}
+
+html {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 body {
   margin: 0;
   background-color: orange;
@@ -9,17 +19,61 @@ body {
   display: flex;
 }
 
+/* reset base */
+
+input[name='locName'],
+input[type='search'] {
+  height: 3rem;
+  width: 20rem;
+  border-radius: 20px;
+  border: none;
+}
+
+input::placeholder {
+  padding-inline-start: 1rem;
+  font-size: 1rem;
+}
+input:focus {
+  font-size: 1rem;
+  outline-color: #999;
+}
+
+button {
+  height: 3rem;
+  width: 6rem;
+  border-radius: 20px;
+  border: none;
+  color: #ffff;
+  background-color: var(--btnBgClr);
+}
+
 header.flex {
+  max-width: var(--mainLayout);
   align-items: center;
+  margin: auto;
   margin-bottom: 5px;
   justify-content: space-between;
 }
 
+/* nav */
 nav.flex {
   margin-bottom: 5px;
   justify-content: space-around;
+  align-items: center;
 }
 
+nav.flex {
+  max-width: var(--mainLayout);
+  margin: auto;
+  background-color: rgb(169, 132, 30);
+}
+
+/* map */
+
+#map {
+  margin: auto;
+  max-width: var(--mainLayout);
+}
 .infoWindow {
   /* background-color: rgb(102, 102, 132); */
   padding: 1rem;
@@ -27,6 +81,28 @@ nav.flex {
   display: flex;
 }
 
-input[name='locName'] {
-  max-width: 100px;
+.info-container {
+  max-width: var(--mainLayout);
+  margin: auto;
+}
+
+.btn-container.flex {
+  padding-top: 3rem;
+}
+
+.btn-container.flex > *:not(button:last-of-type) {
+  margin-inline-end: 1rem;
+}
+
+/* location list */
+table {
+  text-align: center;
+  font-size: 1rem;
+  width: 50%;
+  border: 1px solid #333;
+  border-radius: 20px;
+}
+table tbody tr.location-row {
+  border: 1px solid #333;
+  width: 50%;
 }

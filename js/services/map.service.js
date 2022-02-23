@@ -1,3 +1,5 @@
+import { locService } from './loc.service.js'
+
 export const mapService = {
   initMap,
   addMarker,
@@ -30,8 +32,10 @@ function addMapListener(infoWindow) {
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     })
-
-    saveLocation(mapsMouseEvent.latLng.toJSON())
+    // id, name, lat, lng, weather, createdAt, updatedAt
+    // locService.newLoc(mapsMouseEvent.latLng.toJSON())
+    let loc = mapsMouseEvent.latLng.toJSON()
+    locService.newLoc(1, 'test', loc.lat, loc.lng)
 
     infoWindow.setContent(
       JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
@@ -41,9 +45,6 @@ function addMapListener(infoWindow) {
 }
 
 // pass
-function saveLocation(loc) {
-  console.log('loc:', loc)
-}
 
 function createInfoWindow(myLatlng) {
   console.log('info')

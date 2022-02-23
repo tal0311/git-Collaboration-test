@@ -4,9 +4,11 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
+  getNewCoor,
 }
 
 var gMap
+const API_KEY = 'AIzaSyBkDh_I0warBaT4HBvXXa8jJo-EybvDI1Y'
 
 function initMap(lat = 32.074984, lng = 34.9120554) {
   console.log('InitMap')
@@ -84,7 +86,7 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
-  const API_KEY = 'AIzaSyBkDh_I0warBaT4HBvXXa8jJo-EybvDI1Y'
+  
   var elGoogleApi = document.createElement('script')
   elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
   elGoogleApi.async = true
@@ -94,4 +96,10 @@ function _connectGoogleApi() {
     elGoogleApi.onload = resolve
     elGoogleApi.onerror = () => reject('Google script failed to load')
   })
+}
+
+function getNewCoor(loc) {
+  const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${loc}&key=${API_KEY}`
+  return axios.get(URL)
+      .then(res => res.data)
 }
